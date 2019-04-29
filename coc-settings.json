@@ -1,0 +1,13 @@
+{
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  },
+
+  "suggest.enablePreview": true,
+
+  "javascript.suggestionActions.enabled": false
+}

@@ -18,7 +18,7 @@ set ttyfast
 set foldmethod=manual
 
 " Backups
-let &backupdir=g:vimokBackupDir
+let &backupdir=g:vim0BackupDir
 set backup
 set noswapfile
 set modelines=3

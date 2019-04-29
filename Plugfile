@@ -1,4 +1,4 @@
-call plug#begin(g:vimokPluginsDir)
+call plug#begin(g:vim0PluginsDir)
 
 " linter (replaces syntastic)
 " Plug 'w0rp/ale'

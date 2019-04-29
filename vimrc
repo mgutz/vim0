@@ -3,28 +3,28 @@
 "-------------------------------------------------------------------------------
 let s:__dirname=expand("<sfile>:p:h")
 
-function! VimOKAbsPath(path)
+function! Vim0AbsPath(path)
     return s:__dirname . '/' . a:path
 endfunction
 
 " Dynamically sources a path relative to project
-function! VimOKSource(path)
-    exec 'source ' . VimOKAbsPath(a:path)
+function! Vim0Source(path)
+    exec 'source ' . Vim0AbsPath(a:path)
 endfunction
 
-let vimokPluginsDir=VimOKAbsPath('_bundles')
-let vimokBackupDir=VimOKAbsPath('_tmp')
+let vim0BackupDir=Vim0AbsPath('_backups')
+let vim0PluginsDir=Vim0AbsPath('_plugins')
 
 "-------------------------------------------------------------------------------
 " Load everything
 "-------------------------------------------------------------------------------
 
-" Source vim-plug manager
-call VimOKSource('_bundles/plug.vim')
+" vim-plug manager
+call Vim0Source('_plugins/plug.vim')
 
-" Source plugins
-call VimOKSource('Plugfile')
+" all plugins
+call Vim0Source('Plugfile')
 
-" Source init script
-call VimOKSource('init.vim')
+" customize plugins and vim
+call Vim0Source('init.vim')
 
