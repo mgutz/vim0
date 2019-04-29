@@ -1,0 +1,233 @@
+call plug#begin(g:vimokPluginsDir)
+
+" linter (replaces syntastic)
+" Plug 'w0rp/ale'
+
+" requires the_silver_searcher
+" Plug 'tyok/ack.vim'
+" Plug 'rking/ag.vim'
+"Plug 'tsaleh/vim-align'
+
+"Plug 'pearofducks/ansible-vim'
+Plug 'Chiel92/vim-autoformat', { 'do': 'npm install -g prettier-eslint-cli prettier stylelint' }
+"Plug 'hellhound/cocoa.vim'
+"Plug 'kchmck/vim-coffee-script'
+"Plug 'skammer/vim-css-color'
+"Plug 'hail2u/vim-css3-syntax'
+
+Plug 'moll/vim-bbye'
+
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+
+" Fuzzy find files, buffers, mru
+"Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'tpope/vim-commentary'
+
+"Plug 'vim-scripts/Decho'
+Plug 'Raimondi/delimitMate'
+Plug 'ekalinin/Dockerfile.vim'
+"Plug 'jimmyhchan/dustjs.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/vim-easy-align'
+Plug 'editorconfig/editorconfig-vim'
+"Plug 'elixir-lang/vim-elixir'
+Plug 'mattn/emmet-vim'
+" endwise causes lots of issues
+Plug 'tpope/vim-endwise'
+"let g:endwise_no_mappings=1
+
+Plug 'kana/vim-fakeclip'
+"Plug 'mitsuhiko/fruity-vim-colorscheme'
+Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-git'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'fatih/vim-go'
+
+"Plug 'fatih/molokai'
+"Plug 'junegunn/goyo.vim'
+"Plug 'nono/vim-handlebars'
+"Plug 'tomasr/molokai'
+"Plug 'mxw/vim-jsx'
+"Plug 'mustache/vim-mustache-handlebars'
+"Plug 'tpope/vim-haml'
+
+"Plug 'Yggdroot/indentLine'
+"let g:indentLine_enabled = 1
+"let g:indentLine_char = '│'
+
+"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'michaeljsmith/vim-indent-object'
+"Plug 'digitaltoad/vim-jade'
+
+"Plug 'gutenye/json5.vim'
+
+"Plug 'pangloss/vim-javascript'
+"Plug 'othree/yajs.vim'
+
+"Plug 'maksimr/vim-jsbeautify'
+" causes issues with emmett when in HTML file type
+"Plug 'Glench/Vim-Jinja2-Syntax'
+"Plug 'zeis/vim-kolor'
+"Plug 'groenewege/vim-less'
+" Plug 'itchyny/lightline.vim'
+" Plug 'liuchengxu/eleline.vim'
+" let g:eleline_slime=1
+"Plug 'tpope/vim-markdown'
+"Plug 'mgutz/gosu-colors'
+Plug 'mgutz/vim-colors'
+
+" == deoplete
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+
+" Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
+"Plug 'tomasr/molokai'
+Plug 'mgutz/minline'
+let g:minlineWithGitBranchCharacter = 1
+let g:minlineHonorUserDefinedColors = 0
+
+"Plug 'juvenn/mustache.vim'
+Plug 'terryma/vim-multiple-cursors'
+"Plug 'Shougo/neocomplete.vim'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+"ack + nerdtree-ack must be installed together
+Plug 'mileszs/ack.vim'
+Plug 'tyok/nerdtree-ack'
+
+Plug 'Xuyuanp/nerdtree-git-plugin' "  Nerdtree Git file status
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+
+"Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'evanmiller/nginx-vim-syntax'
+"Plug 'osyo-manga/vim-over'
+"
+"Plug 'tpope/vim-pathogen'
+Plug 'exu/pgsql.vim'
+
+Plug 'aklt/plantuml-syntax'
+
+Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['go']
+
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'branch': 'release/1.x',
+"   \ 'for': [
+"     \ 'javascript',
+"     \ 'typescript',
+"     \ 'css',
+"     \ 'less',
+"     \ 'scss',
+"     \ 'json',
+"     \ 'graphql',
+"     \ 'markdown',
+"     \ 'vue',
+"     \ 'lua',
+"     \ 'php',
+"     \ 'python',
+"     \ 'ruby',
+"     \ 'html',
+"     \ 'swift' ] }
+
+" supertab has issues with YouCompleteMe on Xenial
+"Plug 'ervandew/supertab'
+
+"Plug 'Lokaltog/python-syntax'
+"Plug 'enthooz/vim-razor'
+"Plug 'tpope/vim-rails'
+"Plug 'ornicar/vim-scala'
+"Plug 'vim-scripts/searchfold.vim'
+"Plug 'slim-template/vim-slim'
+Plug 'tpope/vim-surround'
+"Plug 'scrooloose/syntastic'
+"Plug 'vim-scripts/taglist.vim'
+Plug 'majutsushi/tagbar'
+let g:tagbar_left=1
+"Plug 'tomtom/tcomment_vim'
+"Plug 'ilja/Vim-Tomorrow-Theme'
+Plug 'tomtom/tlib_vim'
+"Plug 'clausreinke/typescript-tools'
+
+"Plug 'SirVer/ultisnips'
+
+" Typescript need to be installed together
+"Plug 'leafgarland/typescript-vim'
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Quramy/tsuquyomi'
+
+" vue
+"Plug 'posva/vim-vue'
+
+"Plug 'Shougo/unite.vim'
+"Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+Plug 'tpope/vim-unimpaired'
+"Plug 'tpope/vim-vinegar'
+"Plug 'guns/xterm-color-table.vim'
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer --gocode-completer' }
+
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+
+" (Optional) Multi-entry selection UI.
+"Plug 'junegunn/fzf'
+
+
+"Plug 'jnurmine/Zenburn'
+"Plug 'mattn/zencoding-vim'
+"Plug 'vim-scripts/ZoomWin'
+" Install these together
+"Plug 'vim-scripts/FuzzyFinder'
+"Plug 'vim-scripts/L9'
+"Plug 'tjennings/git-grep-vim'
+if executable("rg")
+	Plug 'jremmen/vim-ripgrep'
+	set grepprg=rg\ --vimgrep
+	let g:ackprg = 'rg --vimgrep'
+	" let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+	" let g:ctrlp_use_caching = 0
+endif
+"Plug 'mgutz/nerdtree-ripgrep'
+"Plug 'mintplant/vim-literate-coffeescript'
+"Plug 'vim-scripts/loremipsum'
+"Plug 'NSinopoli/yaml-vim'
+"Plug 'bling/vim-airline'
+
+" Undo tree viewer
+"Plug 'sjl/gundo.vim'
+
+" Temporary
+"Plug '~/vim-mgutz'
+"
+call plug#end()
+
+" vim: set filetype=vim :
