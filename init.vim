@@ -41,10 +41,10 @@ if (executable('pbcopy') || executable('xclip') || executable('xsel')) && has('c
 	set clipboard=unnamed
 endif
 
-set history=2048            " Number of things to remember in history.
-set autowrite               " Writes on make/shell commands
-set timeoutlen=250          " Time to wait after ESC (default causes an annoying delay)
-set ttimeoutlen=0          " Time to wait after ESC (default causes an annoying delay)
+set history=2048   " Number of things to remember in history.
+set autowrite      " Writes on make/shell commands
+set timeoutlen=250 " Time to wait after ESC (default causes an annoying delay)
+set ttimeoutlen=0  " Time to wait after ESC (default causes an annoying delay)
 set tags=./tags;
 "set cinoptions=:0,p0,t0
 "set cinwords=if,else,while,do,for,switch,case
@@ -88,33 +88,26 @@ if has("autocmd")
 		"autocmd BufNewFile,BufRead *.dust,*.dustjs set filetype=dustjs
 		autocmd BufNewFile,BufRead *.ex,*.exs set filetype=elixir
 		autocmd BufNewFile,BufRead *.eex set filetype=eelixir
-		autocmd BufNewFile,BufRead *.go set filetype=go
+		"autocmd BufNewFile,BufRead *.go set filetype=go
 		autocmd BufNewFile,BufRead *.hbs,*.dot,*.mustache,*.gohtml set filetype=mustache
 		autocmd BufNewFile,BufRead *.jqtpl,*.ejs set filetype=html
 		autocmd BufNewFile,BufRead *.j2 set filetype=jinja
-		autocmd BufNewFile,BufRead *.md set filetype=markdown
+		"autocmd BufNewFile,BufRead *.md set filetype=markdown
 		autocmd BufNewFile,BufRead *.plist set filetype=xml
 		autocmd BufNewFile,BufRead *.sbt set filetype=scala
 		autocmd BufNewFile,BufRead *.thor,*.ru,*.watchr,Capfile,Gemfile,Guardfile,Rakefile,Thorfile,Vagrantfile set filetype=ruby
 		autocmd BufNewFile,BufRead Bakefile,*.zsh-theme set filetype=sh
 		autocmd BufNewFile,BufRead *.sql set filetype=pgsql
-		autocmd BufNewFile,BufRead Dockerfile set filetype=Dockerfile
-		autocmd BufNewFile,BufRead *.js,*.es6,*.jsx set filetype=javascript
+		"autocmd BufNewFile,BufRead Dockerfile set filetype=Dockerfile
+        "autocmd BufNewFile,BufRead *.js,*.es6,*.jsx set filetype=javascript
 
-		" For all text files set 'textwidth' to 78 characters.
-		autocmd FileType elixir,eelixir setlocal expandtab sts=2 sw=2
-		autocmd FileType go setlocal noexpandtab softtabstop=4 shiftwidth=4 tabstop=4
-		autocmd FileType litcoffee,coffee,css,cucumber,haml,handlebars,html,jade,less,lua,mustache,ruby,scala,scss,slim setlocal expandtab softtabstop=2 shiftwidth=2
-		autocmd FileType javascript setlocal nocindent sts=2 sw=2
-		autocmd FileType php setlocal softtabstop=4 shiftwidth=4 tabstop=4
-		autocmd FileType yaml setlocal noet sts=2 sw=2 ts=2
 
 		" disable html indenting, which is rather buggy
 		" autocmd FileType html setlocal nocin nosi inde=
-		autocmd FileType snippet setlocal noet ts=4
+		"autocmd FileType snippet setlocal noet ts=4
 		"autocmd Filetype jade setlocal expandtab softtabstop=2 shiftwidth=2
-		autocmd Filetype pgsql setlocal expandtab softtabstop=2 shiftwidth=2
-		autocmd FileType make setlocal noexpandtab softtabstop=8 shiftwidth=8 tabstop=8
+		" autocmd Filetype pgsql setlocal expandtab softtabstop=2 shiftwidth=2
+		" autocmd FileType make setlocal noexpandtab softtabstop=8 shiftwidth=8 tabstop=8
 
 		autocmd Syntax js,coffee syntax keyword NodeReserved module exports require global console
 		autocmd Syntax js,coffee syntax keyword BrowserReserved window document console constructor
@@ -127,7 +120,7 @@ if has("autocmd")
 		" autocmd BufWritePost,FileWritePost *.coffee !coffee --bare -c <afile>
 
 		" remove trailing whitespace on save
-		autocmd BufWritePre * :%s/\s\+$//e
+		" autocmd BufWritePre * :%s/\s\+$//e
 
 		" file.scss => file.css
 		"autocmd BufWritePost,FileWritePost *.scss,*.sass !sass --scss --style expanded <afile> <afile>:r.css
@@ -316,7 +309,7 @@ let s:in_file_dir = '"cd " . expand("%:p:h") . " && " .'
 
 " Formatters must not print to stderr
 "let verbose=1
-"let g:autoformat_verbosemode=1
+let g:autoformat_verbosemode=1
 "let g:formatdef_prettier='"'.scriptRoot.'/scripts/prettier.sh'.'"'
 let g:formatdef_prettier_eslint = s:in_file_dir . '"npx --no-install prettier-eslint --stdin --log-level silent --parser babel"'
 let g:formatdef_prettier_html = s:in_file_dir . s:PrettierParser('html')
@@ -370,6 +363,15 @@ let g:mgutz_tabline=1
 """ Converts function, null to symbols, ick
 let g:javascript_conceal = 0
 
+
+""" easy align
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 """ html
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
@@ -395,14 +397,14 @@ let g:jsx_ext_required = 0
 "			\ 'javascript_jsx': ['npx prettier'],
 "			\ 'less': ['stylelint'],
 "			\}
-let g:ale_linters_explicit = 0
-" let g:ale_fix_on_save = 1
+"let g:ale_linters_explicit = 0
+"let g:ale_fix_on_save = 1
 
-"let g:ale_javascript_prettier_use_local_config = 1
+""let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
+"highlight link ALEWarningSign String
+"highlight link ALEErrorSign Title
 
 """ NERDCommenter
 let g:NERDAlignCommentToggle=1

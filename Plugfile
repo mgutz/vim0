@@ -1,12 +1,7 @@
 call plug#begin(g:vim0PluginsDir)
 
 " linter (replaces syntastic)
-" Plug 'w0rp/ale'
-
-" requires the_silver_searcher
-" Plug 'tyok/ack.vim'
-" Plug 'rking/ag.vim'
-"Plug 'tsaleh/vim-align'
+Plug 'w0rp/ale'
 
 "Plug 'pearofducks/ansible-vim'
 Plug 'Chiel92/vim-autoformat', { 'do': 'npm install -g prettier-eslint-cli prettier stylelint' }
@@ -35,29 +30,23 @@ Plug 'junegunn/vim-easy-align'
 Plug 'editorconfig/editorconfig-vim'
 "Plug 'elixir-lang/vim-elixir'
 Plug 'mattn/emmet-vim'
-" endwise causes lots of issues
+
+" endwise can cause issues when used with plugins that map <CR>
 Plug 'tpope/vim-endwise'
 "let g:endwise_no_mappings=1
 
 Plug 'kana/vim-fakeclip'
-"Plug 'mitsuhiko/fruity-vim-colorscheme'
 Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-git'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
-"Plug 'fatih/molokai'
-"Plug 'junegunn/goyo.vim'
-"Plug 'nono/vim-handlebars'
-"Plug 'tomasr/molokai'
 "Plug 'mxw/vim-jsx'
 "Plug 'mustache/vim-mustache-handlebars'
-"Plug 'tpope/vim-haml'
 
 "Plug 'Yggdroot/indentLine'
 "let g:indentLine_enabled = 1
@@ -65,7 +54,6 @@ Plug 'fatih/vim-go'
 
 "Plug 'nathanaelkane/vim-indent-guides'
 Plug 'michaeljsmith/vim-indent-object'
-"Plug 'digitaltoad/vim-jade'
 
 "Plug 'gutenye/json5.vim'
 
@@ -96,7 +84,9 @@ Plug 'mgutz/vim-colors'
 
 " Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
-"Plug 'tomasr/molokai'
+" intelligently reopen files at your last edit position
+Plug 'farmergreg/vim-lastplace'
+
 Plug 'mgutz/minline'
 let g:minlineWithGitBranchCharacter = 1
 let g:minlineHonorUserDefinedColors = 0
@@ -105,11 +95,8 @@ let g:minlineHonorUserDefinedColors = 0
 Plug 'terryma/vim-multiple-cursors'
 "Plug 'Shougo/neocomplete.vim'
 "Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-"ack + nerdtree-ack must be installed together
-Plug 'mileszs/ack.vim'
-Plug 'tyok/nerdtree-ack'
 
+Plug 'scrooloose/nerdtree' | Plug 'mileszs/ack.vim' | Plug 'tyok/nerdtree-ack'
 Plug 'Xuyuanp/nerdtree-git-plugin' "  Nerdtree Git file status
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -213,8 +200,6 @@ if executable("rg")
 	Plug 'jremmen/vim-ripgrep'
 	set grepprg=rg\ --vimgrep
 	let g:ackprg = 'rg --vimgrep'
-	" let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-	" let g:ctrlp_use_caching = 0
 endif
 "Plug 'mgutz/nerdtree-ripgrep'
 "Plug 'mintplant/vim-literate-coffeescript'
