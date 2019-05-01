@@ -388,6 +388,7 @@ let g:jsx_ext_required = 0
 
 
 """ ale
+let g:ale_go_langserver_executable = 'gopls'
 
 " ALE's fixer don't provide enough flexibility, use AutoFormat
 " let g:ale_fixers = {
@@ -536,6 +537,8 @@ let g:tagbar_type_javascript = {
 """ vim-go
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
+
+let g:go_def_mode='gopls'
 
 """ ZenCoding
 let g:use_zen_expandabbr_key='<c-e>'
