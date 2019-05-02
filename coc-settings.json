@@ -1,6 +1,8 @@
 {
   "diagnostic.displayByAle": true,
 
+  //"coc.preferences.formatOnSaveFiletypes": ["javascript", "jsx", "javascript.jsx", "css", "html",  "Markdown", "yaml", "less"],
+
   "languageserver": {
     "golang": {
       "command": "gopls",

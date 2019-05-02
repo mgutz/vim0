@@ -151,17 +151,17 @@ if has("autocmd")
 endif
 
 
-if filereadable($HOME."/.vimrc.local")
-    source $HOME/.vimrc.local
-endif
+" if filereadable($HOME."/.vimrc.local")
+"     source $HOME/.vimrc.local
+" endif
 
-if has("gui_running")
-    source $VIM_D/local/gvimrc
+" if has("gui_running")
+"     source $VIM_D/local/gvimrc
 
-    if filereadable($HOME."/.gvimrc.local")
-        source $HOME/.gvimrc.local
-    endif
-endif
+"     if filereadable($HOME."/.gvimrc.local")
+"         source $HOME/.gvimrc.local
+"     endif
+" endif
 
 " error color on status line
 hi User1 ctermfg=white ctermbg=red
@@ -196,9 +196,6 @@ imap <M-s> <Esc>:w<kEnter>i
 " think as cmd+w or ctrl+w
 map <silent> <leader>w :Bwipeout <cr>
 nmap <silent> <leader>t :TagbarToggle<CR>
-
-" format
-nmap <silent> <leader>= :Autoformat<CR>
 
 " zoom
 "map <silent> <leader><leader> :ZoomWin <cr>
@@ -246,7 +243,11 @@ inoremap <C-U> <C-G>u<C-U>
 
 "" PLATFORM SPECIFIC
 if has("macunix")
-	let g:ackprg = 'ag --nogroup --nocolor --column --ignore "*--*"'
+	if executable('rg')
+		let g:ackprg = 'rg --vimgrep'
+	elseif executable('ag')
+		let g:ackprg = 'ag --nogroup --nocolor --column --ignore "*--*"'
+	endif
 elseif has("unix")
 	if executable('rg')
 		let g:ackprg = 'rg --vimgrep'
@@ -296,6 +297,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+"command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+"autocmd BufWrite Bakefile,*.css,*.less,*.js,*.html,*.md,*.sh,*.yml,*.yaml,*.zsh :CocCommand prettier.formatFile
+
 "" PLUGINS
 let g:is_bash = 1
 
@@ -306,12 +311,20 @@ function s:PrettierParser(parser)
 endfunction
 
 let s:in_file_dir = '"cd " . expand("%:p:h") . " && " .'
+let s:suppress_errors = ' . " 2>/dev/null"'
+
+function! s:InFileDir(command)
+    " cd into file's directory AND run the command with npx, redirect  errors
+    " /dev/null
+    return '"cd " . expand("%:p:h") . " &&  npx --no-install " . ' . a:command . ' . " 2>/dev/null"'
+endfunction
 
 " Formatters must not print to stderr
 "let verbose=1
 let g:autoformat_verbosemode=1
-"let g:formatdef_prettier='"'.scriptRoot.'/scripts/prettier.sh'.'"'
-let g:formatdef_prettier_eslint = s:in_file_dir . '"npx --no-install prettier-eslint --stdin --log-level silent --parser babel"'
+
+" commands are evaluated at run-time so quote them so we can use buffer variables like &shiftwidth
+let g:formatdef_prettier_eslint = s:InFileDir('"prettier-eslint --stdin --log-level silent --parser babel --tab-width ". &shiftwidth ')
 let g:formatdef_prettier_html = s:in_file_dir . s:PrettierParser('html')
 let g:formatdef_prettier_less = s:in_file_dir . s:PrettierParser('less')
 let g:formatdef_prettier_markdown = s:in_file_dir . '"npx --no-install prettier --stdin --loglevel silent --parser markdown --print-width 80 --prose-wrap always --tab-width".&shiftwidth'
@@ -326,8 +339,9 @@ let g:formatters_html = ['prettier_html']
 let g:formatters_less = ['prettier_less']
 let g:formatters_markdown = ['prettier_markdown']
 let g:formatters_yaml = ['prettier_yaml']
-"autocmd BufWrite *.js;*.jsx;*.css;*.less :Autoformat
-autocmd BufWrite Bakefile,*.css,*.less,*.js,*.html,*.md,*.sh,*.yml,*.yaml,*.zsh :Autoformat
+
+"autocmd BufWrite Bakefile,*.css,*.less,*.js,*.html,*.md,*.sh,*.yml,*.yaml,*.zsh :Autoformat
+
 
 """ ctrlp
 " set wildignore+=*/img/*,*/node_modules/*,*/tmp/*
@@ -391,21 +405,28 @@ let g:jsx_ext_required = 0
 let g:ale_go_langserver_executable = 'gopls'
 
 " ALE's fixer don't provide enough flexibility, use AutoFormat
-" let g:ale_fixers = {
-"			\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-"			\ 'css': ['stylelint'],
-"			\ 'javascript': ['npx prettier'],
-"			\ 'javascript_jsx': ['npx prettier'],
-"			\ 'less': ['stylelint'],
-"			\}
-"let g:ale_linters_explicit = 0
-"let g:ale_fix_on_save = 1
+ let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'css': ['stylelint'],
+\   'javascript': ['prettier-eslint'],
+\   'javascript_jsx': ['prettier-eslint'],
+\   'less': ['stylelint']
+\}
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+"let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_delay = 250
 
 ""let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-"highlight link ALEWarningSign String
-"highlight link ALEErrorSign Title
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
 """ NERDCommenter
 let g:NERDAlignCommentToggle=1
@@ -418,6 +439,22 @@ augroup nerdtreehidetirslashes
 	autocmd!
 	autocmd FileType nerdtree syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
 augroup end
+
+autocmd FileType nerdtree let t:nerdtree_winnr = bufwinnr('%')
+autocmd BufWinEnter * call PreventBuffersInNERDTree()
+
+" Prevents buffers in nerd tree, but has side effect of closing nerdtree if
+" the current buffer is nerdtree
+function! PreventBuffersInNERDTree()
+  if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree'
+    \ && exists('t:nerdtree_winnr') && bufwinnr('%') == t:nerdtree_winnr
+    \ && &buftype == ''
+    let bufnum = bufnr('%')
+    close
+    exe 'b ' . bufnum
+  endif
+endfunction
+
 
 " augroup nerdtreehidecwd
 " 	autocmd!
@@ -435,24 +472,10 @@ let NERDTreeWinSize=32
 let NERDTreeAutoDeleteBuffer=1
 " let NERDTreeDirArrowExpandable=" "
 " let NERDTreeDirArrowCollapsible=" "
-let NERDTreeStatusline='%{exists("b:NERDTree")?fnamemodify(b:NERDTree.root.path.str(), ":~"):""}'
+" show abbreviated ~/path...
+" let NERDTreeStatusline='%{exists("b:NERDTree") ? "⊟ " . fnamemodify(b:NERDTree.root.path.str(), ":~") : ""}'
+let NERDTreeStatusline='⊟'
 
-" Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Prettier
-"let g:prettier#config#config_precedence = 'prefer-file'
-" let g:prettier#config#parser = 'babylon'
-" let g:prettier#autoformat = 1
-
-" when running at every change you may want to disable quickfix
-"let g:prettier#quickfix_enabled = 1
-"let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 let g:gocode_gofmt_tabwidth=""
 

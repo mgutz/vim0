@@ -1,8 +1,11 @@
 "-------------------------------------------------------------------------------
 " Globals
 "-------------------------------------------------------------------------------
+
+" dirname of script like node.js
 let s:__dirname=expand("<sfile>:p:h")
 
+" Absolute path from script
 function! Vim0AbsPath(path)
     return s:__dirname . '/' . a:path
 endfunction
@@ -12,15 +15,16 @@ function! Vim0Source(path)
     exec 'source ' . Vim0AbsPath(a:path)
 endfunction
 
+let s:pluginsDir = '_plugins'
 let vim0BackupDir=Vim0AbsPath('_backups')
-let vim0PluginsDir=Vim0AbsPath('_plugins')
+let vim0PluginsDir=Vim0AbsPath(s:pluginsDir)
 
 "-------------------------------------------------------------------------------
-" Load everything
+" Initialize
 "-------------------------------------------------------------------------------
 
 " vim-plug manager
-call Vim0Source('_plugins/plug.vim')
+call Vim0Source(s:pluginsDir . '/plug.vim')
 
 " all plugins
 call Vim0Source('Plugfile')
