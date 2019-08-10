@@ -80,22 +80,33 @@ endif
 "" AUTOCMD
 
 if has("autocmd")
+    augroup coffee
+        autocmd!
+		autocmd BufNewFile,BufRead *.coffee,*.cson,Cakefile,*.ck set filetype=coffee
+		autocmd Syntax js,coffee syntax keyword NodeReserved module exports require global console
+		autocmd Syntax js,coffee syntax keyword BrowserReserved window document console constructor
+    augroup END
+
+    augroup elixir
+        autocmd!
+		autocmd BufNewFile,BufRead *.ex,*.exs set filetype=elixir
+		autocmd BufNewFile,BufRead *.eex set filetype=eelixir
+    augroup END
+
+
 	" Put these in an autocmd group, so that we can delete them easily.
 	augroup vimrcEx
 		au!
 
-		autocmd BufNewFile,BufRead *.coffee,*.cson,Cakefile,*.ck set filetype=coffee
 		"autocmd BufNewFile,BufRead *.dust,*.dustjs set filetype=dustjs
-		autocmd BufNewFile,BufRead *.ex,*.exs set filetype=elixir
-		autocmd BufNewFile,BufRead *.eex set filetype=eelixir
 		"autocmd BufNewFile,BufRead *.go set filetype=go
 		autocmd BufNewFile,BufRead *.hbs,*.dot,*.mustache,*.gohtml set filetype=mustache
-		autocmd BufNewFile,BufRead *.jqtpl,*.ejs set filetype=html
+		"autocmd BufNewFile,BufRead *.jqtpl,*.ejs set filetype=html
 		autocmd BufNewFile,BufRead *.j2 set filetype=jinja
 		"autocmd BufNewFile,BufRead *.md set filetype=markdown
 		autocmd BufNewFile,BufRead *.plist set filetype=xml
-		autocmd BufNewFile,BufRead *.sbt set filetype=scala
-		autocmd BufNewFile,BufRead *.thor,*.ru,*.watchr,Capfile,Gemfile,Guardfile,Rakefile,Thorfile,Vagrantfile set filetype=ruby
+		"autocmd BufNewFile,BufRead *.sbt set filetype=scala
+		"autocmd BufNewFile,BufRead *.thor,*.ru,*.watchr,Capfile,Gemfile,Guardfile,Rakefile,Thorfile,Vagrantfile set filetype=ruby
 		autocmd BufNewFile,BufRead Bakefile,*.zsh-theme set filetype=sh
 		autocmd BufNewFile,BufRead *.sql set filetype=pgsql
 		"autocmd BufNewFile,BufRead Dockerfile set filetype=Dockerfile
@@ -109,8 +120,10 @@ if has("autocmd")
 		" autocmd Filetype pgsql setlocal expandtab softtabstop=2 shiftwidth=2
 		" autocmd FileType make setlocal noexpandtab softtabstop=8 shiftwidth=8 tabstop=8
 
-		autocmd Syntax js,coffee syntax keyword NodeReserved module exports require global console
-		autocmd Syntax js,coffee syntax keyword BrowserReserved window document console constructor
+        " editorconfig does not work filetypes only extensions, so some
+        " filetypes have to be set manually
+        autocmd FileType sh,markdown setlocal expandtab softtabstop=4 shiftwidth=4 tabstop=4 textwidth=80
+
 		hi link NodeReserved Constant
 		hi link BrowserReserved Constant
 
@@ -184,7 +197,6 @@ inoremap jk <Esc>`^
 " save file
 map <M-s> :w<kEnter>
 imap <M-s> <Esc>:w<kEnter>i
-
 
 " set leader
 "let mapleader=","
@@ -297,58 +309,16 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "autocmd BufWrite Bakefile,*.css,*.less,*.js,*.html,*.md,*.sh,*.yml,*.yaml,*.zsh :CocCommand prettier.formatFile
 
 "" PLUGINS
 let g:is_bash = 1
-
-""" autoformat
-
-function s:PrettierParser(parser)
-	return '"npx --no-install prettier --stdin --loglevel silent --parser ' . a:parser . ' --tab-width " . &shiftwidth'
-endfunction
-
-let s:in_file_dir = '"cd " . expand("%:p:h") . " && " .'
-let s:suppress_errors = ' . " 2>/dev/null"'
-
-function! s:InFileDir(command)
-    " cd into file's directory AND run the command with npx, redirect  errors
-    " /dev/null
-    return '"cd " . expand("%:p:h") . " &&  npx --no-install " . ' . a:command . ' . " 2>/dev/null"'
-endfunction
-
-" Formatters must not print to stderr
-"let verbose=1
-let g:autoformat_verbosemode=1
-
-" commands are evaluated at run-time so quote them so we can use buffer variables like &shiftwidth
-let g:formatdef_prettier_eslint = s:InFileDir('"prettier-eslint --stdin --log-level silent --parser babel --tab-width ". &shiftwidth ')
-let g:formatdef_prettier_html = s:in_file_dir . s:PrettierParser('html')
-let g:formatdef_prettier_less = s:in_file_dir . s:PrettierParser('less')
-let g:formatdef_prettier_markdown = s:in_file_dir . '"npx --no-install prettier --stdin --loglevel silent --parser markdown --print-width 80 --prose-wrap always --tab-width".&shiftwidth'
-let g:formatdef_prettier_yaml = s:in_file_dir . '"npx --no-install prettier --stdin --loglevel silent --parser yaml --tab-width ".&shiftwidth'
-let g:formatdef_prettier_css = s:in_file_dir . s:PrettierParser('css')
-let g:formatdef_stylelint = s:in_file_dir . '"npx --no-install stylelint --fix --quiet"'
-
-let g:formatters_javascript = ['prettier_eslint']
-let g:formatters_css = ['prettier_css']
-let g:formatters_javascript_jsx = ['prettier_eslint']
-let g:formatters_html = ['prettier_html']
-let g:formatters_less = ['prettier_less']
-let g:formatters_markdown = ['prettier_markdown']
-let g:formatters_yaml = ['prettier_yaml']
-
-"autocmd BufWrite Bakefile,*.css,*.less,*.js,*.html,*.md,*.sh,*.yml,*.yaml,*.zsh :Autoformat
-
-
-""" ctrlp
-" set wildignore+=*/img/*,*/node_modules/*,*/tmp/*
-" set wildignore+=*/img/*,tmp/*
-" set wildignore+=*.gif,*.ico,*.png,*.psd,*.so,*.swp,*.svg,*.zip,*--*
-" set wildignore+=*--*
-" set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/build/*,*/node_modules/*    " Linux/MacOSX
 
 """ FZF
 
@@ -410,14 +380,17 @@ let g:ale_go_langserver_executable = 'gopls'
 \   'css': ['stylelint'],
 \   'javascript': ['prettier-eslint'],
 \   'javascript_jsx': ['prettier-eslint'],
-\   'less': ['stylelint']
+\   'less': ['stylelint'],
+\   'markdown': ['prettier'],
+\   'sh': ['shfmt'],
+\   'typescript': ['prettier'],
 \}
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
 
-let g:ale_linters_explicit = 1
+let g:ale_linters_explicit = 0
 let g:ale_fix_on_save = 1
 "let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_delay = 250
@@ -425,7 +398,9 @@ let g:ale_lint_delay = 250
 ""let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
+
+" specific to t256
+highlight link ALEWarningSign Function
 highlight link ALEErrorSign Title
 
 """ NERDCommenter
@@ -433,6 +408,8 @@ let g:NERDAlignCommentToggle=1
 let NERDCommentWholeLinesInVMode=1
 let NERDRemoveAltComs=0
 let NERDSpaceDelims=1
+
+""" NERDTree
 
 " Hide NERDTree folder trailing slashes
 augroup nerdtreehidetirslashes
@@ -455,7 +432,6 @@ function! PreventBuffersInNERDTree()
   endif
 endfunction
 
-
 " augroup nerdtreehidecwd
 " 	autocmd!
 " 	autocmd FileType nerdtree setlocal conceallevel=3
@@ -463,7 +439,6 @@ endfunction
 " 				\ | setlocal concealcursor=n
 " augroup end
 
-""" NERDTree
 let NERDTreeIgnore=['^NTUSER', '^ntuser', '\~$', 'desktop.ini', '\.lnk$', '\.exe$', '\.search-ms$', '\.dll$', '.DS_Store', '\.pyc$']
 let NERDTreeMinimalUI=1
 let NERDTreeQuitOnOpen=0

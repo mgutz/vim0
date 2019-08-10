@@ -1,7 +1,7 @@
 call plug#begin(g:vim0PluginsDir)
 
 " linter (replaces syntastic)
-Plug 'w0rp/ale'
+Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 
 "Plug 'pearofducks/ansible-vim'
 "Plug 'Chiel92/vim-autoformat', { 'do': 'npm install -g prettier-eslint-cli prettier stylelint eslint' }
