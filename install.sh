@@ -5,7 +5,7 @@ __dirname="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 # ensure pre-requisites are installed
 for cmd in node yarn go; do
 	command -v $cmd >/dev/null 2>&1 || {
-		echo $cmd is require but not installed
+		echo $cmd is required not installed
 		exit 1
 	}
 done
@@ -28,3 +28,11 @@ ln -sf $PWD/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # hook into vim
 echo "source $__dirname/vimrc" >~/.vimrc
+
+# hook nvim
+mkdir -p ~/.config/nvim
+echo "
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source $__dirname/vimrc
+" >~/.config/nvim/init.vim
