@@ -277,6 +277,7 @@ end
 
 """ coc.vim Completion
 
+
 " Complete options (disable preview scratch window, longest removed to aways show menu)
 set completeopt=longest,menuone
 

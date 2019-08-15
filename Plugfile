@@ -12,8 +12,11 @@ Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 
 Plug 'moll/vim-bbye'
 
+
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css']
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+
+"Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 "Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 "Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 
