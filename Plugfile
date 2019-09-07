@@ -96,7 +96,7 @@ let g:minlineWithGitBranchCharacter = 1
 let g:minlineHonorUserDefinedColors = 0
 
 "Plug 'juvenn/mustache.vim'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 "Plug 'Shougo/neocomplete.vim'
 "Plug 'scrooloose/nerdcommenter'
 
