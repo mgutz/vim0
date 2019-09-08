@@ -13,7 +13,7 @@ Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 Plug 'moll/vim-bbye'
 
 
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-prettier']
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
 "Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -96,7 +96,7 @@ let g:minlineWithGitBranchCharacter = 1
 let g:minlineHonorUserDefinedColors = 0
 
 "Plug 'juvenn/mustache.vim'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 "Plug 'Shougo/neocomplete.vim'
 "Plug 'scrooloose/nerdcommenter'
 
