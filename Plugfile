@@ -12,8 +12,7 @@ Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 
 Plug 'moll/vim-bbye'
 
-
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-prettier']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-emmet', 'coc-prettier']
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
 "Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -33,7 +32,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
 Plug 'editorconfig/editorconfig-vim'
 "Plug 'elixir-lang/vim-elixir'
-Plug 'mattn/emmet-vim'
+"Plug 'mattn/emmet-vim'
 
 " endwise can cause issues when used with plugins that map <CR>
 Plug 'tpope/vim-endwise'
