@@ -15,9 +15,9 @@ Plug 'moll/vim-bbye'
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-emmet', 'coc-prettier']
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
-"Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc-tsserver', {'do': 'npm install --frozen-lockfile'}
+"Plug 'neoclide/coc-eslint', {'do': 'npm install --frozen-lockfile'}
+"Plug 'neoclide/coc-prettier', {'do': 'npm install --frozen-lockfile'}
 
 " Fuzzy find files, buffers, mru
 "Plug 'ctrlpvim/ctrlp.vim'
@@ -128,12 +128,12 @@ Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['go', 'ansible']
 
 " Plug 'prettier/vim-prettier', {
-"     \ 'do': 'yarn install',
+"     \ 'do': 'npm install',
 "     \ 'branch': 'release/1.x'
 "     \ }
 
 " Plug 'prettier/vim-prettier', {
-"   \ 'do': 'yarn install',
+"   \ 'do': 'npm install',
 "   \ 'branch': 'release/1.x',
 "   \ 'for': [
 "     \ 'javascript',
