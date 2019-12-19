@@ -3,7 +3,7 @@
 __dirname="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 # ensure pre-requisites are installed
-for cmd in node yarn go; do
+for cmd in node npm go; do
 	command -v $cmd >/dev/null 2>&1 || {
 		echo $cmd is required not installed
 		exit 1
