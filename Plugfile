@@ -30,7 +30,7 @@ Plug 'ekalinin/Dockerfile.vim'
 "Plug 'jimmyhchan/dustjs.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/vim-easy-align'
-Plug 'editorconfig/editorconfig-vim'
+"Plug 'editorconfig/editorconfig-vim'
 "Plug 'elixir-lang/vim-elixir'
 "Plug 'mattn/emmet-vim'
 
@@ -113,7 +113,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
-
 
 "Plug 'jistr/vim-nerdtree-tabs'
 "Plug 'evanmiller/nginx-vim-syntax'
