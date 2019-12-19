@@ -1,7 +1,7 @@
 call plug#begin(g:vim0PluginsDir)
 
 " linter (replaces syntastic)
-Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
+" Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 
 "Plug 'pearofducks/ansible-vim'
 "Plug 'Chiel92/vim-autoformat', { 'do': 'npm install -g prettier-eslint-cli prettier stylelint eslint' }
@@ -12,7 +12,7 @@ Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 
 Plug 'moll/vim-bbye'
 
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-emmet', 'coc-prettier']
+let g:coc_global_extensions = ['coc-css', 'coc-eslint', 'coc-emmet', 'coc-go', 'coc-prettier', 'coc-sh', 'coc-tsserver']
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
 
 "Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -46,7 +46,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 "Plug 'mxw/vim-jsx'
 "Plug 'mustache/vim-mustache-handlebars'
@@ -214,6 +214,8 @@ endif
 "Plug 'vim-scripts/loremipsum'
 "Plug 'NSinopoli/yaml-vim'
 "Plug 'bling/vim-airline'
+"
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 
 " Undo tree viewer
 "Plug 'sjl/gundo.vim'

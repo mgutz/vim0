@@ -6,10 +6,20 @@
 
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript", "jsx", "css", "html",
-    "Markdown", "yaml", "less"
+    "Markdown", "yaml", "less", "svelte",
+    "typescript", "javascript_jsx", "typescript.tsx"
   ],
 
+  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
+
   "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      // DO NOT start at home folder, it wil not work
+      "ignoredRootPaths": ["~"]
+    },
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
@@ -17,8 +27,12 @@
     }
   },
 
+  "suggest.echodocSupport": true,
   "suggest.enablePreview": true,
+  "suggest.maxCompleteItemCount": 20,
   "suggest.noselect": true,
 
   "javascript.suggestionActions.enabled": false
+
+
 }

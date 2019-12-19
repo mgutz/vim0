@@ -423,11 +423,13 @@ let g:ale_go_langserver_executable = 'gopls'
 \   'less': ['stylelint'],
 \   'markdown': ['prettier'],
 \   'sh': ['shfmt'],
+\   'svelte': ['eslint', 'prettier', 'prettier_standard'],
 \   'typescript': ['prettier'],
 \}
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'svelte': ['stylelint', 'eslint'],
 \}
 
 let g:ale_linters_explicit = 0
@@ -438,6 +440,8 @@ let g:ale_lint_delay = 250
 ""let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
+
+let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
 
 " specific to t256
 highlight link ALEWarningSign Function
@@ -485,14 +489,30 @@ let NERDTreeQuitOnOpen=0
 let NERDTreeWinPos='right'       " left | right
 let NERDTreeWinSize=32
 let NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeShowHidden = 1
+
 " let NERDTreeDirArrowExpandable=" "
 " let NERDTreeDirArrowCollapsible=" "
 " show abbreviated ~/path...
 " let NERDTreeStatusline='%{exists("b:NERDTree") ? "⊟ " . fnamemodify(b:NERDTree.root.path.str(), ":~") : ""}'
-let NERDTreeStatusline='⊟'
+"let NERDTreeStatusline='⊟'
+
+" No NERDTree status
+let NERDTreeStatusline=' '
+
+" Hide certain files and directories from NERDTree
+let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]', '\.idea$[[dir]]', '\.sass-cache$']
+
+
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 let g:gocode_gofmt_tabwidth=""
+
+""" Shmt
+let g:shfmt_fmt_on_save = 1
+let g:shfmt_extra_args = '-s -i 4'
 
 
 """ Tagbar
