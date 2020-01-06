@@ -18,6 +18,9 @@ set ttyfast
 set foldmethod=manual
 set updatetime=300
 
+" Automatically re-read file if a change was detected outside of vim
+set autoread
+
 " Backups
 let &backupdir=g:vim0BackupDir
 set backup
@@ -489,10 +492,20 @@ let NERDTreeAutoDeleteBuffer=1
 " let NERDTreeDirArrowCollapsible=" "
 " show abbreviated ~/path...
 " let NERDTreeStatusline='%{exists("b:NERDTree") ? "⊟ " . fnamemodify(b:NERDTree.root.path.str(), ":~") : ""}'
-let NERDTreeStatusline='⊟'
+"let NERDTreeStatusline='⊟'
+let NERDTreeStatusline=' '
+
+" Show hidden files/directories
+let g:NERDTreeShowHidden = 1
+
+" quit if NERDTree is last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 let g:gocode_gofmt_tabwidth=""
+
+
+
 
 
 """ Tagbar
