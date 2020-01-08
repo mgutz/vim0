@@ -31,4 +31,3 @@ call Vim0Source('Plugfile')
 
 " customize plugins and vim
 call Vim0Source('init.vim')
-

@@ -2,6 +2,12 @@
 
 __dirname="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
+if [ "$1" == "full" ]; then
+	cp Plugfile.full Plugfile
+else
+	cp Plugfile.mini Plugfile
+fi
+
 # ensure pre-requisites are installed
 for cmd in node npm go; do
 	command -v $cmd >/dev/null 2>&1 || {

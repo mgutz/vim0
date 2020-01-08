@@ -10,22 +10,20 @@ Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 "Plug 'skammer/vim-css-color'
 "Plug 'hail2u/vim-css3-syntax'
 
-"Plug 'moll/vim-bbye'
+" intelligently close buffers :Bwipeout
+Plug 'moll/vim-bbye'
 
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-emmet', 'coc-prettier']
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
-
-"Plug 'neoclide/coc-tsserver', {'do': 'npm install --frozen-lockfile'}
-"Plug 'neoclide/coc-eslint', {'do': 'npm install --frozen-lockfile'}
-"Plug 'neoclide/coc-prettier', {'do': 'npm install --frozen-lockfile'}
 
 " Fuzzy find files, buffers, mru
 "Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'tpope/vim-commentary'
 
+
 "Plug 'vim-scripts/Decho'
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 "Plug 'ekalinin/Dockerfile.vim'
 "Plug 'jimmyhchan/dustjs.vim'
 Plug 'easymotion/vim-easymotion'
@@ -34,8 +32,13 @@ Plug 'editorconfig/editorconfig-vim'
 "Plug 'elixir-lang/vim-elixir'
 "Plug 'mattn/emmet-vim'
 
+" Close quotes
+Plug 'jiangmiao/auto-pairs'
+
+" Close language constructs like if, begin
 " endwise can cause issues when used with plugins that map <CR>
 Plug 'tpope/vim-endwise'
+
 "let g:endwise_no_mappings=1
 
 Plug 'kana/vim-fakeclip'

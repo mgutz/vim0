@@ -1,0 +1,57 @@
+call plug#begin(g:vim0PluginsDir)
+
+
+" linter (replaces syntastic)
+Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
+
+" intelligently close buffers :Bwipeout
+Plug 'moll/vim-bbye'
+
+Plug 'tpope/vim-commentary'
+Plug 'editorconfig/editorconfig-vim'
+
+" Close quotes
+Plug 'jiangmiao/auto-pairs'
+
+" Close language constructs like if, begin
+" endwise can cause issues when used with plugins that map <CR>
+Plug 'tpope/vim-endwise'
+
+Plug 'kana/vim-fakeclip'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'mgutz/vim-colors'
+Plug 'mgutz/minline'
+let g:minlineWithGitBranchCharacter = 1
+let g:minlineHonorUserDefinedColors = 0
+
+Plug 'scrooloose/nerdtree' | Plug 'mileszs/ack.vim' | Plug 'tyok/nerdtree-ack'
+Plug 'Xuyuanp/nerdtree-git-plugin' "  Nerdtree Git file status
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+
+Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['go', 'ansible']
+
+if executable("rg")
+	Plug 'jremmen/vim-ripgrep'
+	set grepprg=rg\ --vimgrep
+	let g:ackprg = 'rg --vimgrep'
+endif
+
+call plug#end()
+
+" vim: set filetype=vim :
