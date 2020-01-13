@@ -2,7 +2,7 @@ call plug#begin(g:vim0PluginsDir)
 
 
 " linter (replaces syntastic)
-Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
+Plug 'w0rp/ale'
 
 " intelligently close buffers :Bwipeout
 Plug 'moll/vim-bbye'
