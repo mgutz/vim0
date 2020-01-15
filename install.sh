@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+IFS=$'\n\t'
+
 __dirname="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+short_dir="\$HOME${__dirname##$HOME}"
 
 if [ "$1" == "full" ]; then
 	for cmd in nvim node npm go; do
@@ -26,7 +30,7 @@ curl -fLo _plugins/plug.vim \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # hook into vim
-echo "source $__dirname/vimrc" >~/.vimrc
+echo "source $short_dir/vimrc" >~/.vimrc
 
 if command -v nvim >/dev/null; then
 	# nvim configuration directory
@@ -40,7 +44,7 @@ if command -v nvim >/dev/null; then
 	echo "
 	set runtimepath^=~/.vim runtimepath+=~/.vim/after
 	let &packpath = &runtimepath
-	source $__dirname/vimrc
+	source "$short_dir"/vimrc
 	" >~/.config/nvim/init.vim
 
 	nvim +PlugInstall +qall
