@@ -496,7 +496,7 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeStatusline=' '
 
 " Show hidden files/directories
-let g:NERDTreeShowHidden = 1
+" let g:NERDTreeShowHidden = 1
 
 " quit if NERDTree is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
