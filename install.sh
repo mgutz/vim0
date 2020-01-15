@@ -5,7 +5,7 @@ __dirname="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 if [ "$1" == "full" ]; then
 	for cmd in nvim node npm go; do
 		command -v $cmd >/dev/null 2>&1 || {
-			echo $cmd is required not installed
+			echo $cmd is required and is not installed
 			exit 1
 		}
 	done
