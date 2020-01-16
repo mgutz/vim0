@@ -5,8 +5,9 @@ IFS=$'\n\t'
 
 __dirname="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 short_dir="\$HOME${__dirname##$HOME}"
+install_mode="${1:-mini}"
 
-if [ "$1" == "full" ]; then
+if [ "$install_mode" == "full" ]; then
 	for cmd in nvim node npm go; do
 		command -v $cmd >/dev/null 2>&1 || {
 			echo $cmd is required and is not installed
