@@ -689,4 +689,7 @@ endif
 " This should come at the end
 filetype plugin indent on
 
-colorscheme t256
+try
+    colorscheme t256
+catch
+endtry
