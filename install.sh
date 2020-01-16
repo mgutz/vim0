@@ -48,7 +48,7 @@ if command -v nvim >/dev/null; then
 	source "$short_dir"/vimrc
 	" >~/.config/nvim/init.vim
 
-	nvim +PlugInstall +qall
+	nvim +'PlugInstall --sync' +qa
 else
-	vim +PlugInstall +qall
+	vim +'PlugInstall --sync' +qa
 fi
