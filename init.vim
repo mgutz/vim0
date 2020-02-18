@@ -195,8 +195,8 @@ endif
 
 "" KEY MAPPINGS
 
-" vim moves back one character after space, this
-inoremap jk <Esc>`^
+" Map jk to ESC
+"inoremap jk <Esc>`^
 
 " save file
 map <M-s> :w<kEnter>

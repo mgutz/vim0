@@ -9,13 +9,18 @@
     "Markdown", "yaml", "less"
   ],
 
+
   "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   },
+
 
   "suggest.enablePreview": true,
   "suggest.noselect": true,
