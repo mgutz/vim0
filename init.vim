@@ -399,6 +399,10 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+
+" Align GitHub-flavored Markdown tables by selecting then pressing \\
+au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
+
 """ html
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"

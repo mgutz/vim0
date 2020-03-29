@@ -6,7 +6,7 @@
 
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript", "jsx", "css", "html",
-    "Markdown", "yaml", "less"
+    "markdown", "yaml", "less"
   ],
 
 

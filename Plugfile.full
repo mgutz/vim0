@@ -14,7 +14,7 @@ Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 Plug 'moll/vim-bbye'
 
 let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-emmet', 'coc-prettier']
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install() }}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Fuzzy find files, buffers, mru
 "Plug 'ctrlpvim/ctrlp.vim'

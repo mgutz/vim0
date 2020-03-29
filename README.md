@@ -10,9 +10,9 @@ Currently tailored for JavaScript, Node, Go and React development.
 
 Pre-requisites
 
--   node + yarn
--   Go
--   BASH
+- node + yarn
+- Go
+- BASH
 
 To install (not yet fully automated. Use at yourn own risk)
 
