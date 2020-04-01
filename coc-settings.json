@@ -2,7 +2,7 @@
   "diagnostic.displayByAle": true,
 
   // needed if npm is dynamic
-  //"tsserver.npm": "/home/mgutz/.nvm/versions/node/v10.15.3/bin/npm",
+  // "tsserver.npm": "/home/mgutz/.nvm/versions/node/v10.15.3/bin/npm",
 
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript", "jsx", "css", "html",
