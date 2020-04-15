@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+	set -euo pipefail
 IFS=$'\n\t'
 
 __dirname="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"

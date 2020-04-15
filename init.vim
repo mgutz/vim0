@@ -368,23 +368,29 @@ au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 let g:ale_go_langserver_executable = 'gopls'
 
 " ALE's fixer don't provide enough flexibility, use AutoFormat
+"
  let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'css': ['stylelint'],
-\   'javascript': ['prettier-eslint'],
-\   'javascript_jsx': ['prettier-eslint'],
-\   'less': ['stylelint'],
-\   'markdown': ['prettier'],
+\   'css': [],
+\   'javascript': [],
+\   'javascript_jsx': [],
+\   'less': [],
+\   'markdown': [],
 \   'sh': ['shfmt'],
-\   'typescript': ['prettier'],
+\   'typescript': [],
 \}
 
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
+\   'c': [], 'cpp': [], 'rust': [], 'go': [], 'python': [], 'sh': [],
+\   'html': [], 'css': [], 'javascript': [], 'typescript': [], 'reason': [],
+\   'json': [], 'vue': [],
+\   'tex': [], 'latex': [], 'bib': [], 'bibtex': []
+\ }
+
+
 
 let g:ale_linters_explicit = 0
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 "let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_delay = 250
 
