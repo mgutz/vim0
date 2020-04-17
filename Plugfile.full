@@ -1,17 +1,19 @@
 call plug#begin(g:vim0PluginsDir)
 
 " linter
-Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
+""Plug 'w0rp/ale', {'do': 'npm install -g bash-language-server'}
 
 " intelligently close buffers :Bwipeout
 Plug 'moll/vim-bbye'
 
 " LSP et al
-let g:coc_global_extensions = ['coc-tsserver', 'coc-css', 'coc-emmet', 'coc-prettier', 'coc-json', 'coc-yaml', 'coc-snippets']
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+""let g:coc_global_extensions = ['coc-tsserver',  'coc-diagnostic', 'coc-css', 'coc-emmet', 'coc-prettier', 'coc-json', 'coc-yaml', 'coc-snippets']
+let g:coc_global_extensions = ['coc-tsserver',  'coc-diagnostic', 'coc-css', 'coc-emmet', 'coc-prettier',  'coc-yaml', 'coc-snippets']
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Comment/uncomment text
 Plug 'tpope/vim-commentary'
+""Plug 'tomtom/tcomment_vim'
 
 Plug 'easymotion/vim-easymotion'
 
@@ -99,6 +101,9 @@ if executable("rg")
 	set grepprg=rg\ --vimgrep
 	let g:ackprg = 'rg --vimgrep'
 endif
+
+
+Plug 'junegunn/goyo.vim'
 
 " Undo tree viewer
 "Plug 'sjl/gundo.vim'
