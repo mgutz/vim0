@@ -1,5 +1,8 @@
 " init.vim - vim initialization script
 
+" set leader
+"let mapleader=" "
+
 " start guard {{
 if exists("g:vim_mgutz_loaded")
     finish
@@ -144,14 +147,12 @@ endif
 " Key Mappings {{
 
 " Map jk to ESC
-" inoremap jk <Esc>`^
+inoremap jk <Esc>`^
 
 " save file
 map <M-s> :w<kEnter>
 imap <M-s> <Esc>:w<kEnter>i
 
-" set leader
-"let mapleader=","
 
 " alt+n or alt+p to navigate between entries in QuickFix
 "map <silent> <m-p> :cp <cr>

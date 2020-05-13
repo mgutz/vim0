@@ -22,10 +22,10 @@
     "json"
   ],
 
-  "diagnostic-languageserver.filetypes": {
+  //jj"diagnostic-languageserver.filetypes": {
     // lint `sh` (includes `bash`) files
-    "sh": "shellcheck"
-  },
+    //"sh": "shellcheck"
+  //},
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt-formatter"
   },
