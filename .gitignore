@@ -3,3 +3,6 @@ _plugins
 .nvimlog
 Plugfile
 .INSTALLED
+
+Plugfile.old
+node_modules

@@ -23,8 +23,8 @@
   ],
 
   //jj"diagnostic-languageserver.filetypes": {
-    // lint `sh` (includes `bash`) files
-    //"sh": "shellcheck"
+  // lint `sh` (includes `bash`) files
+  //"sh": "shellcheck"
   //},
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt-formatter"
