@@ -64,7 +64,7 @@ let g:minlineHonorUserDefinedColors = 0
 
 Plug 'scrooloose/nerdtree' | Plug 'mileszs/ack.vim' | Plug 'tyok/nerdtree-ack'
 Plug 'Xuyuanp/nerdtree-git-plugin' "  Nerdtree Git file status
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",

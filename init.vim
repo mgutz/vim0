@@ -90,6 +90,9 @@ if executable("rg")
     let g:ctrlp_use_caching = 0
 endif
 
+" no right margin line
+set colorcolumn=
+
 " if has('win32') || has ('win64')
 "   exec "source ".scriptRoot.'/windows.vim'
 " endif
