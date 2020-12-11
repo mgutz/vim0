@@ -21,7 +21,9 @@ set nocompatible
 syntax on
 syntax sync minlines=256
 
-set regexpengine=1
+" WARNING: The next line results in coc.nvim hanging with typescript files!
+" set regexpengine=1
+
 set lazyredraw
 set ttyfast
 set foldmethod=manual
@@ -473,6 +475,8 @@ nmap <silent> <leader>n :NERDTreeToggle <cr>
 
 "like lcd
 map <silent> <leader>l :NERDTreeFind<cr>
+
+"let g:NERDTreeGitStatusConcealBrackets = 1 " default: 0
 
 " }} /NERDTree
 

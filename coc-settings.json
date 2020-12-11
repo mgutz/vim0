@@ -22,7 +22,7 @@
     "json"
   ],
 
-  //jj"diagnostic-languageserver.filetypes": {
+  // "diagnostic-languageserver.filetypes": {
   // lint `sh` (includes `bash`) files
   //"sh": "shellcheck"
   //},
