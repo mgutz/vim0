@@ -28,7 +28,10 @@ set lazyredraw
 set ttyfast
 set foldmethod=manual
 set updatetime=300
-set relativenumber
+" WARNING: relativenumber can affect performance as well
+"set relativenumber
+set nonumber
+set ruler
 
 " Automatically re-read file if a change was detected outside of vim
 set autoread
@@ -43,7 +46,6 @@ set termencoding=utf-8
 set fileencodings=          " Don't do any encoding conversion"
 
 set history=100
-set number ruler
 set linebreak nowrap
 set laststatus=2
 set autoindent backspace=indent,eol,start
@@ -298,7 +300,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 nmap <silent> <C-d> <Plug>(coc-cursors-word)
 xmap <silent> <C-d> <Plug>(coc-cursors-range)
@@ -348,6 +349,8 @@ nnoremap <leader>f :ToggleFiles <cr>
 nnoremap <leader>b :ToggleBuffers <cr>
 " }} end FZF
 
+" GitGutter {{
+" }}
 
 " mgutz/vim-colors {{
 let g:mgutz_tabline=1
