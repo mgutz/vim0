@@ -1,3 +1,5 @@
+" This is just the loader. Main configuration is in vimrc.vim
+
 "-------------------------------------------------------------------------------
 " Globals
 "-------------------------------------------------------------------------------
@@ -30,4 +32,4 @@ call Vim0Source(s:pluginsDir . '/plug.vim')
 call Vim0Source('Plugfile')
 
 " customize plugins and vim
-call Vim0Source('init.vim')
+call Vim0Source('vimrc.vim')
