@@ -28,7 +28,7 @@ set lazyredraw
 set ttyfast
 set foldmethod=manual
 set updatetime=300
-" WARNING: relativenumber can affect performance as well
+" WARNING: relativenumber can affect performance
 "set relativenumber
 set nonumber
 set ruler
@@ -69,7 +69,7 @@ set showmatch               " Show matching brackets.
 "set list listchars=tab:??,trail:?
 set list listchars=tab:»·,trail:·
 
-set mouse-=a                " Disable visual mouse
+set mouse+=a                " Enable mouse support
 set hidden                  " allow buffer changes without being written
 
 set fo-=r                   " do not insert a comment leader after an enter, (no work, fix!!)
@@ -88,6 +88,10 @@ if has('autocmd')
     autocmd GUIEnter * set vb t_vb=
 endif
 
+" eob: ugly ~ at end of buffers
+" vert: vertical split character
+set fillchars=vert:\ ,eob:\ ,
+
 if executable("rg")
     set grepprg=rg\ --vimgrep
     let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
@@ -97,7 +101,6 @@ endif
 " if has('win32') || has ('win64')
 "   exec "source ".scriptRoot.'/windows.vim'
 " endif
-
 " }} General Settings
 
 
@@ -543,13 +546,15 @@ let g:tagbar_type_javascript = {
 
 
 " vim-go {{
-let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+"let g:go_def_mode='gopls'
+"let g:go_info_mode='gopls'
 let g:go_def_mapping_enabled = 0
-let g:gocode_gofmt_tabwidth=""
+"let g:gocode_gofmt_tabwidth=""
+"let g:go_metalinter_autosave=1
+
 " }}
 
 
