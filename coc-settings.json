@@ -5,10 +5,10 @@
   // "tsserver.npm": "/home/mgutz/.nvm/versions/node/v10.15.3/bin/npm",
 
   "typescript.suggest.enabled": false,
-  "typescript.validate.enable": false,
+  "typescript.validate.enable": true,
   "javascript.suggest.enabled": false,
-  "javascript.validate.enable": false,
-  "json.format.enable": true,
+  "javascript.validate.enable": true,
+  "json.format.enable": false,
 
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",

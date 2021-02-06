@@ -546,7 +546,7 @@ let g:tagbar_type_javascript = {
 
 
 " vim-go {{
-"let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 
 "let g:go_def_mode='gopls'
