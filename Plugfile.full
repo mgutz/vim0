@@ -8,7 +8,7 @@ Plug 'moll/vim-bbye'
 
 " LSP et al
 ""let g:coc_global_extensions = ['coc-tsserver',  'coc-diagnostic', 'coc-css', 'coc-emmet', 'coc-prettier', 'coc-json', 'coc-yaml', 'coc-snippets']
-let g:coc_global_extensions = ['coc-tsserver',  'coc-diagnostic', 'coc-css', 'coc-emmet', 'coc-prettier',  'coc-yaml', 'coc-snippets']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-eslint', 'coc-diagnostic', 'coc-css', 'coc-emmet', 'coc-prettier',  'coc-yaml', 'coc-snippets']
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Comment/uncomment text
@@ -30,7 +30,7 @@ Plug 'jiangmiao/auto-pairs'
 "let g:endwise_no_mappings=1
 
 "Plug 'kana/vim-fakeclip'
-Plug 'roxma/vim-tmux-clipboard'
+""Plug 'roxma/vim-tmux-clipboard'
 "Plug 'tpope/vim-tbone'
 
 " git bindings
@@ -62,7 +62,8 @@ let g:minlineHonorUserDefinedColors = 0
 
 "Plug  'itchyny/lightline.vim'
 
-Plug 'scrooloose/nerdtree' | Plug 'mileszs/ack.vim' | Plug 'tyok/nerdtree-ack'
+""Plug 'scrooloose/nerdtree' | Plug 'mileszs/ack.vim' | Plug 'tyok/nerdtree-ack'
+Plug 'scrooloose/nerdtree' | Plug 'zackhsi/nerdtree-rg.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin' "  Nerdtree Git file status
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
